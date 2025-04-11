@@ -3,10 +3,11 @@ output "result" {
     values = {
       host     = "${kubernetes_service.postgres.metadata.0.name}.${kubernetes_service.postgres.metadata.0.namespace}.svc.cluster.local"
       port     = kubernetes_service.postgres.spec.0.port.0.port
-      username = ""
+      username = var.user
+      database = var.database
     }
     secrets = {
-      password = ""
+      password = var.password
     }
     // UCP resource IDs
     resources = [
