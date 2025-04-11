@@ -8,3 +8,29 @@ variable "port" {
   type = number
   default = 5432
 }
+
+variable "username" {
+  description = "The username to use when connecting to Postgres. Defaults to 'postgres'."
+  type = string
+  default = "postgres"
+  
+}
+
+variable "password" {
+  description = "The password to use when connecting to Postgres. Defaults to 'postgres'."
+  type = string
+  default = "postgres"
+
+}
+variable "db_name" {
+  description = "The name of the database to create. Defaults to 'postgres'."
+  type = string
+  default = "postgres"
+}
+
+variable "tag" {
+  description = "The version of Postgres to use. Defaults to 'latest'."
+  type = string
+  default = "latest"
+  
+}

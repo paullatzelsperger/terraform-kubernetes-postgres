@@ -32,9 +32,21 @@ resource "kubernetes_deployment" "postgres" {
       spec {
         container {
           name  = "postgres"
-          image = "postgres:16"
+          image = "postgres:${var.tag}"
           port {
             container_port = 5432
+          }
+          env {
+            name  = "POSTGRES_USER"
+            value = var.username
+          }
+          env {
+            name  = "POSTGRES_PASSWORD"
+            value = var.password
+          }
+          env {
+            name  = "POSTGRES_DB"
+            value = var.db_name
           }
         }
       }
