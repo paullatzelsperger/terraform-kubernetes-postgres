@@ -9,7 +9,7 @@ terraform {
 
 resource "kubernetes_deployment" "postgres" {
   metadata {
-    name = "postgres-${sha512(var.context.resource.id)}"
+    name      = "postgres-${uuidv5("url", var.context.resource.id)}"
     namespace = var.context.runtime.kubernetes.namespace
     labels = {
       app = "postgres"
@@ -18,14 +18,14 @@ resource "kubernetes_deployment" "postgres" {
   spec {
     selector {
       match_labels = {
-        app = "postgres"
+        app      = "postgres"
         resource = var.context.resource.name
       }
     }
     template {
       metadata {
         labels = {
-          app = "postgres"
+          app      = "postgres"
           resource = var.context.resource.name
         }
       }
@@ -56,13 +56,13 @@ resource "kubernetes_deployment" "postgres" {
 
 resource "kubernetes_service" "postgres" {
   metadata {
-    name = "postgres-${sha512(var.context.resource.id)}"
+    name      = "postgres-${uuidv5("url", var.context.resource.id)}"
     namespace = var.context.runtime.kubernetes.namespace
   }
   spec {
     type = "ClusterIP"
     selector = {
-      app = "postgres"
+      app      = "postgres"
       resource = var.context.resource.name
     }
     port {
