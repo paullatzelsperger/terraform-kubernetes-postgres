@@ -9,8 +9,8 @@ variable "port" {
   default     = 5432
 }
 
-variable "username" {
-  description = "The username to use when connecting to Postgres. Defaults to 'postgres'."
+variable "user" {
+  description = "The user name to use when connecting to Postgres. Defaults to 'postgres'."
   type        = string
   default     = "postgres"
 
@@ -22,7 +22,7 @@ variable "password" {
   default     = "postgres"
 
 }
-variable "db_name" {
+variable "database" {
   description = "The name of the database to create. Defaults to 'postgres'."
   type        = string
   default     = "postgres"

@@ -38,7 +38,7 @@ resource "kubernetes_deployment" "postgres" {
           }
           env {
             name  = "POSTGRES_USER"
-            value = var.username
+            value = var.user
           }
           env {
             name  = "POSTGRES_PASSWORD"
@@ -46,7 +46,7 @@ resource "kubernetes_deployment" "postgres" {
           }
           env {
             name  = "POSTGRES_DB"
-            value = var.db_name
+            value = var.database
           }
         }
       }
